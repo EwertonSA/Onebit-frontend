@@ -16,12 +16,13 @@ export type CourseType={
     thumbnailUrl:string
     synopsis:string
 }
-export const coourseService={
-getNewestCourse: async()=>{
-    const res=await api.get("/course/newest").catch((error)=>{
-        console.log(error.response.data.message)
-        return error.message
-    })
-    return res;
-}
-}
+export const courseService = {
+    getNewestCourse: async () => {
+      try {
+        const res = await api.get("/courses/newest");
+        return res.data; // Retorna apenas os dados
+      } catch (error:any) {
+        console.error("Erro ao buscar curso:", error.response?.data?.message || error.message);
+        return null; // Retorna null para evitar `undefined`
+      }
+    }}
