@@ -20,9 +20,8 @@ export const courseService = {
     getNewestCourse: async () => {
       try {
         const res = await api.get("/courses/newest");
-        return res.data; // Retorna apenas os dados
+        return res.data;
       } catch (error:any) {
         console.error("Erro ao buscar curso:", error.response?.data?.message || error.message);
-        return null; // Retorna null para evitar `undefined`
-      }
+        return null;    }
     }}
