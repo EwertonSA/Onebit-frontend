@@ -23,7 +23,7 @@ export const courseService = {
         return res.data;
       } catch (error:any) {
         console.error("Erro ao buscar curso:", error.response?.data?.message || error.message);
-        return null;    }
+        return [];    }
     },
   getFeaturedCourses: async()=>{
     const token=sessionStorage.getItem('onebitflix-token')

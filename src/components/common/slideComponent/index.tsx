@@ -8,9 +8,9 @@ interface props{
 }
 export const SlideComponent=({course}:props)=>{
     let slideCount= 0;
-    if(course.length>4){
+    if(Array.isArray(course) && course.length>4){
         slideCount=4
-    }else if(course){
+    }else if(Array.isArray(course)){
         slideCount=course.length
     }
     return(
@@ -22,20 +22,20 @@ export const SlideComponent=({course}:props)=>{
                 perMove:1,
                 width:slideCount*300,
                 pagination:false,
-                arrows:course.length >4 ? true:false,
-                drag:course.length >4 ? true:false,
+                arrows:Array.isArray(course) && course.length >4 ? true:false,
+                drag:Array.isArray(course) && course.length >4 ? true:false,
                 breakpoints:{
                     1200:{
                         perPage:slideCount >= 2 ? 2 : 1,
                        width:slideCount>=2 ? 600 : 300,
-                       arrows:course.length >2 ? true:false,
-                       drag:course.length >2 ? true:false,
+                       arrows:Array.isArray(course) && course.length>2 ? true:false,
+                       drag: Array.isArray(course) && course.length >2 ? true:false,
                     },
                     600:{
                         perPage:1,
                         width:300,
-                        arrows:course.length >1 ? true:false,
-                        drag:course.length >1 ? true:false,
+                        arrows:Array.isArray(course) && course.length >1 ? true:false,
+                        drag:Array.isArray(course) && course.length >1 ? true:false,
                     },
                     300:{
                         width:250
