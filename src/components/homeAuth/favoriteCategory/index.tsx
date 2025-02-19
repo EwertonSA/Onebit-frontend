@@ -1,7 +1,7 @@
 import useSWR from "swr";
 import styles from "../../../../styles/slideCategory.module.scss";
 import { courseService } from "@/src/services/courseService";
-import { SlideComponent } from "../slideComponent";
+import { SlideComponent } from "../../common/slideComponent";
 
 const FavoriteCategory=()=>{
     const {data,error}=useSWR("/favorites", courseService.getFav)
@@ -12,7 +12,7 @@ const FavoriteCategory=()=>{
         )
     }
     return(<>
-    <p className={styles.titleCategory}>Minha lista</p>
+    <p className={styles.titleCategory}>MINHA LISTA</p>
     {data.data?.courses.length >=1 ? (
         <SlideComponent course={data.data.courses}/>
     ):(
