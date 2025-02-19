@@ -1,0 +1,30 @@
+import categoriesServices from "@/src/services/categoriesServices"
+import useSWR from "swr"
+import styles from "../../../../styles/slideCategory.module.scss"
+import { SlideComponent } from "../../common/slideComponent";
+interface props{
+    categoryId:number;
+    categoryName:string
+}
+const ListCategoriesSlide = ({ categoryId, categoryName }: props) => {
+    const { data, error } = useSWR(`/categoriesCourses/${categoryId}`, () => categoriesServices.getCourses(categoryId));
+
+    console.log("Dados da categoria e cursos:", data); // 🔍 Veja o que está vindo
+
+    if (error) return <p>Erro ao carregar categorias: {error.message}</p>;
+
+    if (!data) return <p>Loading...</p>;
+
+    return (
+        <>
+            <p className={styles.titleCategory}>{categoryName}</p>
+            {data.course && data.course.length > 0 ? (
+                <SlideComponent course={data.course} />
+            ) : (
+                <p>Não há cursos disponíveis nesta categoria.</p>
+            )}
+        </>
+    );
+};
+
+export default ListCategoriesSlide
