@@ -52,6 +52,7 @@ return(
     <>
     <Head>
         <title>Onebitflix - Login</title>
+        <link rel="shortcut icon" href="/favicon.svg" type="image/x-icon" />
     </Head>
     <main className={styles.main}>
         <HeaderGeneric logoUrl="/" btnContent="Quero fazer parte" btnUrl="/register" />
