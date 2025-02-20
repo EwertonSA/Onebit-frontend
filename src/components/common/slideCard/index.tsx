@@ -6,9 +6,13 @@ interface props{
 }
 
 export const SlideCard = ({ course }: props) => {
-    const imageUrl = `${process.env.NEXT_PUBLIC_BASEURL}/${course.thumbnailUrl}`;
-    console.log("Imagem URL: ", imageUrl);
+    const defaultImage = "/images/default-thumbnail.jpg"; 
+    const imageUrl = course.thumbnailUrl 
+        ? `${process.env.NEXT_PUBLIC_BASEURL}/${course.thumbnailUrl}` 
+        : defaultImage;
 
+    console.log("Dados do curso:", course);
+    console.log("Imagem URL:", imageUrl);
     return (
         <>
             <div className={styles.slide}>
