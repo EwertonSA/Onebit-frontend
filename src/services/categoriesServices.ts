@@ -20,13 +20,12 @@ const categoriesServices= {
                 },
             });
     
-            console.log("Resposta da API:", res); // 🔍 Logar a resposta completa
+            console.log("Resposta da API:", res);
     
-            // Verifique a estrutura da resposta e ajuste conforme necessário
-            return res.data;  // Isso assume que a resposta está em res.data
+            return res.data;
         } catch (err) {
             console.error("Erro ao buscar categorias:", err);
-            return null; // Em caso de erro, retorna null
+            return null;
         }
     },
     
@@ -40,12 +39,12 @@ const categoriesServices= {
                 },
             });
     
-            console.log("Dados da categoria:", res.data); // 🔍 Veja no console
+            console.log("Dados da categoria:", res.data); 
     
-            return res.data;  // Certifique-se de retornar a estrutura de dados correta.
+            return res.data; 
         } catch (err) {
             console.error("Erro ao buscar cursos:", err);
-            return { course: [] };  // Retorna um array vazio para evitar erros de `undefined`
+            return { course: [] };  
         }
     }
 }

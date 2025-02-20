@@ -5,8 +5,7 @@ import ListCategoriesSlide from "../listCategoriesSlide";
 const ListCategories = () => {
     const { data, error } = useSWR("/categories", categoriesServices.getCategories);
 
-    console.log("Dados recebidos:", data); // 🔍 Verifique a estrutura dos dados
-
+    console.log("Dados recebidos:", data); 
     if (error) return <p>Erro ao carregar categorias: {error.message}</p>;
 
     if (!data) return <p>Loading...</p>;
