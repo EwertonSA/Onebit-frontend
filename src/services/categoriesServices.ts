@@ -46,6 +46,8 @@ const categoriesServices= {
             console.error("Erro ao buscar cursos:", err);
             return { course: [] };  
         }
+    },
+
     }
-}
+
 export default categoriesServices
