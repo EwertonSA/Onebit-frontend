@@ -1,0 +1,17 @@
+.main{
+  display: flex;
+  flex-direction: column;
+
+}
+.noSearchText {
+    text-align: center;
+    padding: 20px;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  .footerHeaderBg{
+    background-color: black;
+  }
+  .searchResult{
+    flex: 1 0 auto;
+  }

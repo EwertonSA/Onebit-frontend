@@ -3,6 +3,10 @@ import { courseService, CourseType } from "@/src/services/courseService"
 import Head from "next/head"
 import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
+import styles from "../styles/search.module.scss";
+import { Container } from "reactstrap"
+import SearchCard from "@/src/components/searchCard"
+import { Footer } from "@/src/components/common/footer"
 
 const Search=()=>{
     const router=useRouter()
@@ -15,7 +19,7 @@ const Search=()=>{
             if (res.status === 200 && res.data?.courses?.length > 0) {
                 setResult(res.data.courses);
             } else {
-                console.log("Nenhum curso encontrado");
+                <p className={styles.noSearchText}>Nenhum resultado encontrado</p>
             }
         }
     }
@@ -29,13 +33,26 @@ searchCourses()}
 <title>Onebitflix - {"searchName"}</title>
 <link rel="shortcut icon" href="/favicon.svg" type="image/x-icon" />
     </Head>
-    <main>
-<HeaderAuth/>
-{result?.map((course)=>(
-    <div key={course.id}>
-<p>{course.name}</p>
-    </div>
-))}
+    <main className={styles.main}>
+        <div className={styles.footerHeaderBg}> 
+        <HeaderAuth/>
+        </div>
+
+
+        {result.length >= 1 ? (
+          <div className={styles.searchResult}>
+            <Container className="d-flex flex-wrap justify-content-center py-4 gap-5">
+            {result?.map((course) => (
+              <SearchCard key={course.id} course={course} />
+            ))}
+          </Container>
+          </div>
+        ) : (
+          <p className={styles.noSearchText}>Nenhum resultado encontrado!</p>
+        )}
+          <div className={styles.footerHeaderBg}> 
+        <Footer/>
+        </div>
     </main> 
     </>
     )
