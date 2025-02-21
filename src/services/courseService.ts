@@ -89,4 +89,22 @@ export const courseService = {
   
     return res;
   },
+
+  getEpisodes: async (id: number | string) => {
+    const token = sessionStorage.getItem("onebitflix-token");
+    const res = await api
+    .get(`/course/${id}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+    })
+    .catch((error) => {
+      console.log(error.response.data.messsage);
+  
+      return error.response;
+    });
+  
+    return res;
+  },
+  
   }

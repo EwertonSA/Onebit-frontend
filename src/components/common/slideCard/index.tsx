@@ -1,3 +1,4 @@
+import Link from "next/link";
 import styles from "./styles.module.scss"
 import { CourseType } from "@/src/services/courseService"
 
@@ -15,7 +16,8 @@ export const SlideCard = ({ course }: props) => {
     console.log("Imagem URL:", imageUrl);
     return (
         <>
-            <div className={styles.slide}>
+          <Link href={`/course/${course.id}`}>
+          <div className={styles.slide}>
                 <img
                     src={imageUrl}
                     alt={course.name}
@@ -24,6 +26,7 @@ export const SlideCard = ({ course }: props) => {
                 <p className={styles.slideTitle}>{course.name}</p>
                 <p className={styles.description}>{course.synopsis}</p>
             </div>
+          </Link>
         </>
     );
 };
