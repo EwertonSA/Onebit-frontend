@@ -4,8 +4,11 @@ import Head from "next/head"
 import { Button, Col, Container, Row } from "reactstrap"
 import styles from "../styles/profile.module.scss"
 import { Footer } from "@/src/components/common/footer"
+import { useState } from "react"
+import PasswordForm from "@/src/components/profile/password"
 
 const UserInfo=()=>{
+    const [form,setForm]=useState('UserForm')
     return(
     <>
     <Head>
@@ -21,12 +24,12 @@ const UserInfo=()=>{
             <p className={styles.title}> Minha conta</p>
             <Row className="pt-3 pb-5">
                 <Col md={4} className={styles.btnColumn}>
-                <Button className={styles.renderForm}>DADOS PESSOAIS</Button>
-                <Button className={styles.renderForm}>SENHA</Button>
+                <Button className={styles.renderForm}style={{ color: form === "userForm" ? "#FF0044" : "white" }} onClick={()=>{setForm('userForm')}}>DADOS PESSOAIS</Button>
+                <Button className={styles.renderForm} style={{ color: form === "passwordForm" ? "#FF0044" : "white" }} onClick={()=>{setForm('passwordForm')}}>SENHA</Button>
                 </Col>
                 <Col md></Col>
             </Row>
-            <UserForm/>
+            {form === 'userForm' ? <UserForm /> : <PasswordForm />}
         </Container>
         <div className={styles.footer}>
             <Footer/>

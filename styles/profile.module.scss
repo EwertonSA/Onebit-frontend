@@ -92,6 +92,8 @@
     font-weight: bold;
     font-size: 15px;
     padding: 6px 20px;
+    display: block;
+    margin: 10px auto;
     &:hover{
         border-color: $darkRed;
         background-color: transparent;
@@ -111,10 +113,19 @@
     background-color: transparent;
     font-weight: bold;
     margin: 0 auto;
+    padding: 14px 0px;
     &:hover{
         background-color: transparent;
-        color: $lightGray;
+        color: $lightRed  ;
         border-color: $lightGray;
+    }
+    &:active{
+      background-color: transparent;
+      box-shadow: none;
+    }
+    &:focus{
+      background-color: transparent;
+      box-shadow: none;
     }
 }
 .footer{
