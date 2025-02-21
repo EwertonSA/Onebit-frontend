@@ -6,6 +6,11 @@ lastName:string;
 email:string;
 phone:string;
 created_at:string;
+};
+interface PasswordParams{
+    currentPassword:string;
+    newPassword:string
+
 }
 const profileService={
 fetchCurrent:async()=>{
@@ -32,6 +37,19 @@ userUpdate:async(params:UserParams)=>{
       
     })
       return res.data
+},
+passwordUpdate:async(params:PasswordParams)=>{
+const token= sessionStorage.getItem("onebitflix-token");
+const res= await api.put("/users/current/password",params,{
+    headers:{
+        Authorization: `Bearer ${token}`,
+    }
+}).catch(err=>{
+    if (err.response.status === 400 || err.response.status === 401) {
+        return err.response;
+    }
+})
+return res.status;
 }
 }
   export default profileService
