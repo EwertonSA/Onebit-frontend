@@ -2,13 +2,16 @@
 import categoriesServices, { CategoryType } from "../../../services/categoriesServices";
 import useSWR from "swr";
 import ListCategoriesSlide from "../listCategoriesSlide";
+import PageSpinner from "../../common/spinner";
 const ListCategories = () => {
     const { data, error } = useSWR("/categories", categoriesServices.getCategories);
 
     console.log("Dados recebidos:", data); 
     if (error) return <p>Erro ao carregar categorias: {error.message}</p>;
 
-    if (!data) return <p>Loading...</p>;
+    if(!data){
+        return <PageSpinner/>
+    }
 
     return (
         <>
