@@ -9,9 +9,7 @@ interface props{
 }
 const ListCategoriesSlide = ({ categoryId, categoryName }: props) => {
     const { data, error } = useSWR(`/categoriesCourses/${categoryId}`, () => categoriesServices.getCourses(categoryId));
-    console.log("Dados da categoria e cursos:", data);
-    console.log("Tipo de data:", typeof data);
-    console.log("Estrutura de data:", JSON.stringify(data, null, 2));
+   
     if (error) return <p>Erro ao carregar categorias: {error.message}</p>;
     if(!data){
         return <PageSpinner/>

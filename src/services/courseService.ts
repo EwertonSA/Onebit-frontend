@@ -53,7 +53,7 @@ export const courseService = {
     const token=sessionStorage.getItem("onebitflix-token")
     const res= await api.delete("/favorites",{
       headers:{
-        Authorization: `Beare ${token}`
+        Authorization: `Bearer ${token}`
       },
       data:{courseId},
     }).catch(err=>{
@@ -64,6 +64,29 @@ export const courseService = {
   getFav:async()=>{
     const token =sessionStorage.getItem("onebitflix-token")
     const res=await api.get("/favorites",{
+      headers:{
+        Authorization:`Bearer ${token}`
+      },
+    }).catch(err=>{
+      return err.response
+    })
+    return res
+  },
+
+  Like:async(courseId:number|string )=>{
+    const token =sessionStorage.getItem("onebitflix-token")
+    const res=await api.post("/likes", {courseId},{
+      headers:{
+        Authorization:`Bearer ${token}`
+      },
+    }).catch(err=>{
+      return err.response
+    })
+    return res
+  },
+  removeLike:async(courseId:number|string )=>{
+    const token =sessionStorage.getItem("onebitflix-token")
+    const res=await api.delete(`/likes/${courseId}`,{
       headers:{
         Authorization:`Bearer ${token}`
       },
@@ -93,7 +116,7 @@ export const courseService = {
   getEpisodes: async (id: number | string) => {
     const token = sessionStorage.getItem("onebitflix-token");
     const res = await api
-    .get(`/course/${id}`, {
+    .get(`/courses/${id}`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
