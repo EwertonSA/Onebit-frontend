@@ -15,6 +15,7 @@ export type CourseType={
     name:string
     thumbnailUrl:string
     synopsis:string
+    episodes?:EpisodeType[]
 }
 export const courseService = {
     getNewestCourse: async () => {
@@ -51,11 +52,11 @@ export const courseService = {
   },
   removeFav:async(courseId:number|string)=>{
     const token=sessionStorage.getItem("onebitflix-token")
-    const res= await api.delete("/favorites",{
+    const res= await api.delete(`/favorites/${courseId}`,{
       headers:{
         Authorization: `Bearer ${token}`
       },
-      data:{courseId},
+     
     }).catch(err=>{
       return err.response
     })
@@ -75,7 +76,7 @@ export const courseService = {
 
   Like:async(courseId:number|string )=>{
     const token =sessionStorage.getItem("onebitflix-token")
-    const res=await api.post("/likes", {courseId},{
+    const res=await api.post(`/likes/${courseId}`,{
       headers:{
         Authorization:`Bearer ${token}`
       },

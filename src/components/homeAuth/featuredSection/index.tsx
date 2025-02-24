@@ -6,34 +6,43 @@ import { Button, Container } from "reactstrap";
 import Link from "next/link";
 import PageSpinner from "../../common/spinner";
 
+const FeaturedSection = () => {
+    const { data, error } = useSWR("/featured", courseService.getFeaturedCourses);
 
-const FeaturedSection=()=>{
-    const {data,error}=useSWR("/featured", courseService.getFeaturedCourses)
-    if(error) return error;
-    if(!data){
-        return <PageSpinner/>
-    }
-    return(
-    <>
- {data.data?.map((course:CourseType)=>(
-    <div style={{backgroundImage: `linear-gradient(to bottom, #6666661a , #151515),
-     url(${process.env.NEXT_PUBLIC_BASEURL}/${course.thumbnailUrl})`, 
-     backgroundSize: "cover",
-     backgroundPosition: "center",
-       height: "480px",
-     }} key={course.id}>
-        <HeaderAuth/>
-        <Container className="pt-4">
-        <p className={styles.title} >{course.name}</p>
-        <p className={styles.description} >{course.synopsis}</p>
-        <Link href={`/courses/${course.id}`}> 
-        <Button outline color='light' className={styles.button}>Acesse agora
-            <img src="/buttonPlay.svg" alt="buttonImg" className={styles.buttonImg} />
-        </Button>
-        </Link>
-        </Container>
-        </div>
- ))[0]}
-    </>)
+    if (error) return error;
+    if (!data) return <PageSpinner />;
+
+    return (
+        <>
+            {data.data?.map((course: CourseType) => {
+                const imageUrl = `${process.env.NEXT_PUBLIC_BASEURL}/${course.thumbnailUrl}`;
+            
+
+                return (
+                    <div
+                        style={{
+                            backgroundImage: `linear-gradient(to bottom, #6666661a , #151515), url(${imageUrl})`,
+                            backgroundSize: "cover",
+                            backgroundPosition: "center",
+                            height: "480px",
+                        }}
+                        key={course.id}
+                    >
+                        <HeaderAuth />
+                        <Container className="pt-4">
+                            <p className={styles.title}>{course.name}</p>
+                            <p className={styles.description}>{course.synopsis}</p>
+                            <Link href={`/courses/${course.id}`}>
+                                <Button outline color="light" className={styles.button}>
+                                    Acesse agora
+                                    <img src="/buttonPlay.svg" alt="buttonImg" className={styles.buttonImg} />
+                                </Button>
+                            </Link>
+                        </Container>
+                    </div>
+                );
+            })[0]}
+        </>
+    );
 };
 export default FeaturedSection;

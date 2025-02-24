@@ -12,8 +12,7 @@ export const SlideCard = ({ course }: props) => {
         ? `${process.env.NEXT_PUBLIC_BASEURL}/${course.thumbnailUrl}` 
         : defaultImage;
 
-    console.log("Dados do curso:", course);
-    console.log("Imagem URL:", imageUrl);
+   
     return (
         <>
           <Link href={`/course/${course.id}`}>
