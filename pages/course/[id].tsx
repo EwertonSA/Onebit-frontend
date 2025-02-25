@@ -12,6 +12,7 @@ const CoursePage = () => {
     const [course, setCourse] = useState<CourseType | null>(null);
     const [liked, setLiked] = useState(false);
     const [favorited, setFavorited] = useState(false);
+    const [loading, setLoading] = useState(true); 
     const router = useRouter();
     const { id } = router.query;
 
@@ -22,8 +23,8 @@ const CoursePage = () => {
             const res = await courseService.getEpisodes(id);
             if (res.status === 200) {
                 setCourse(res.data);
-                setLiked(res.data.liked); // Corrigido para res.data.liked
-                setFavorited(res.data.favorited); // Corrigido para res.data.favorited
+                setLiked(res.data.liked);
+                setFavorited(res.data.favorited); 
             }
         } catch (error) {
             console.error("Erro ao buscar curso:", error);
@@ -34,6 +35,17 @@ const CoursePage = () => {
         if (id) getCourse();
     }, [id]);
 
+    
+    useEffect(()=>{
+        if(!sessionStorage.getItem("onebitflix-token")){
+        router.push("/login")
+        }else{
+        setLoading(false)
+        }
+        },[])
+        if(loading){
+          return <PageSpinner/>
+        }
     const imageUrl = course ? `${process.env.NEXT_PUBLIC_BASEURL}/${encodeURI(course.thumbnailUrl)}` : "";
 
     const handleLikeCourse = async () => {

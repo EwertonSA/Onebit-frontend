@@ -17,6 +17,7 @@ const EpisodePlayer = () => {
     const [loading, setLoading] = useState(true); 
     const [episodeTime,setEpisodeTime]=useState(0)
     const [getEpisodeTime,setGetEpisodeTime]=useState(0)
+    
     const playerRef= useRef<ReactPlayer>(null)
 
     const episodeOrder = Number(router.query.id);
@@ -70,7 +71,17 @@ handleSetEpisodeTime()
             getCourse();
         }
     }, [courseId]);
-
+   
+    useEffect(()=>{
+    if(!sessionStorage.getItem("onebitflix-token")){
+    router.push("/login")
+    }else{
+    setLoading(false)
+    }
+    },[])
+    if(loading){
+      return <PageSpinner/>
+    }
 
     const handleLastEpisode = () => {
         router.push(`/course/episode/${episodeOrder - 1}?courseid=${course?.id}&episodeid=${
