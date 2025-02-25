@@ -1,11 +1,15 @@
 import { Button } from "reactstrap";
 import styles from "./styles.module.scss";
-import { EpisodeType } from "@/src/services/courseService";
+import { CourseType, EpisodeType } from "@/src/services/courseService";
+import { useRouter } from "next/router";
 
 interface props{
-    episode:EpisodeType
+    episode:EpisodeType;
+    course: CourseType
 }
-const EpisodeList=({episode}:props)=>{
+const EpisodeList=({episode,course}:props)=>{
+    const router= useRouter();
+
     const handleSecondsToMin=(totalSeconds:number)=>{
         const minutes= Math.floor(totalSeconds/60);
         const seconds=totalSeconds % 60
@@ -15,9 +19,12 @@ const EpisodeList=({episode}:props)=>{
         const result = `${toString(minutes)}:${toString(seconds)}`;
         return result;
     }
+    const handleEpisodePlayer=()=>{
+        router.push(`/course/episode/${episode.order - 1}?courseid=${course.id}`)
+    }
     return(
         <>
-        <div className={styles.episodeCard}>
+        <div className={styles.episodeCard} onClick={handleEpisodePlayer}>
             <div className={styles.episodeOrderTime}>
                 <p className={styles.episodeOrder}>Episódio N°{episode.order}</p>
                 <p className={styles.episodeTime}>{handleSecondsToMin(episode.secondsLong)}</p>
