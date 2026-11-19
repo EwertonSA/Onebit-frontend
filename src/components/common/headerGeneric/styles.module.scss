@@ -1,4 +1,4 @@
-@import "../../../../styles/colors.scss";
+@use "../../../../styles/colors.scss";
 .header{
     background-color:black ;
 }
@@ -14,8 +14,8 @@
     cursor: pointer;
 }
 .headerBtn:hover{
-    border-color: $lightRed;
-    color: $lightGray;
+    border-color: colors.$lightRed;
+    color: colors.$lightGray;
     background-color: transparent;
 }
 @media (max-width: 575px) {

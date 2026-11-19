@@ -1,4 +1,4 @@
-@import "./colors.scss";
+@use "./colors.scss" as colors;
 .main {
   background-image: linear-gradient(to bottom, #151515, black);
 }
@@ -10,7 +10,7 @@
 .form {
   width: 600px;
   padding: 50px;
-  border: 1px solid $darkGray;
+  border: 1px solid colors.$darkGray;
   margin: 0 auto;
 }
 .label {
@@ -19,16 +19,16 @@
     padding-top: 20px;
   }
   .input {
-    border-color: $darkGray;
+    border-color: colors.$darkGray;
     background-color: transparent;
     color: white;
   
     &::placeholder {
-      color: $lightGray;
+      color: colors.$lightGray;
     }
     &:focus {
       background-color: transparent;
-      border-color: $lightGray;
+      border-color: colors.$lightGray;
       color: white;
       box-shadow: none;
     }
@@ -43,13 +43,13 @@
   .formBtn {
     display: block;
     margin: 50px auto 0 auto;
-    border-color: $lightRed;
+    border-color: colors.$lightRed;
     color: white;
   
     &:hover {
       background-color: transparent;
-      color: $lightGray;
-      border-color: $darkRed;
+      color: colors.$lightGray;
+      border-color: colors.$darkRed;
     }
   }
 @media(max-width:767px){

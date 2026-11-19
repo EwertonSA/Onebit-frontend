@@ -1,4 +1,4 @@
-@import "../../../../styles/colors.scss";
+@use "../../../../styles/colors.scss";
 .sectionTitle{
     font-size: 20px;
     font-weight: bold;
@@ -7,8 +7,8 @@
     transition: 0.3s;
   
     &:hover {
-      border-color: $lightRed;
+      border-color: colors.$lightRed;
       background-color: transparent;
-      color: $lightGray;
+      color: colors.$lightGray;
     }
   }

@@ -1,4 +1,4 @@
-@import "../../../../../styles/colors.scss";
+@use "../../../../../styles/colors.scss";
 .sectionTitle{
     font-size: 20px;
     font-weight: bold;
@@ -22,7 +22,7 @@
     }
     .cardDescription{
         font-size: 15px;
-        color: $lightGray;
+        color: colors.$lightGray;
    
     }
     &:hover{
