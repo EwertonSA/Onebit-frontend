@@ -1,4 +1,4 @@
-@import "../../../../styles/colors.scss";
+@use "../../../../styles/colors.scss";
 
 .title{
     font-size:50px ;
@@ -7,7 +7,7 @@
     width: 660px;
 }
 .description{
-    color: $lightGray;
+    color: colors.$lightGray;
     font-size: 21px;
     width: 600px;
     height: 120px;
@@ -24,9 +24,9 @@
     font-weight: bold;
     margin: 10px 35px;
     &:hover{
-        border-color:$lightRed ;
+        border-color:colors.$lightRed ;
         background-color:transparent ;
-        color: $lightGray;
+        color: colors.$lightGray;
     }
 
 }

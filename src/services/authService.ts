@@ -22,19 +22,22 @@ const authService={
             return err
 
         })
+        console.log('resultado:',res)
         return res;
     },
     login: async (params: LoginParams) => {
         const res = await api.post("/auth/login", params).catch((error) => {
+       
       if (error.response.status === 400 || error.response.status === 401) {
           return error.response;
       }
+      
       return error;
      });
      if (res.status === 200) {
         sessionStorage.setItem("onebitflix-token", res.data.token);
     }
-  
+   console.log('res',res)
     return res;
     },
 }

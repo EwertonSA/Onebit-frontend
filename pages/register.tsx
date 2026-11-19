@@ -43,7 +43,7 @@ router.push("/login?registred=true")
   setTimeout(() => {
   setToastIsOpen(false);
 }, 1000 * 3);
-	setToastMessage(data.message);
+	setToastMessage("Erro fatal");
 }
 }
   

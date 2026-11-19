@@ -1,4 +1,4 @@
-@import "../../../../styles/colors.scss";
+@use "../../../../styles/colors.scss";
 
 .imgLogoNav{
     width: 160px;
@@ -33,11 +33,11 @@
 .input{
     background-color: transparent;
     color: white;
-    border-radius: $lightGray;
+    border-radius: colors.$lightGray;
     &:focus{
         background-color: transparent;
         color:white;
-        border-color: $mediumGray;
+        border-color: colors.$mediumGray;
         box-shadow: none;
 
     }
@@ -81,7 +81,7 @@
     cursor: pointer;
     transition: 0.4s;
     &:hover{
-        color: $lightRed;
+        color: colors.$lightRed;
     }
   }
   @media(max-width:767px){
