@@ -18,14 +18,16 @@ export type CourseType={
     episodes?:EpisodeType[]
 }
 export const courseService = {
-    getNewestCourse: async () => {
-      try {
-        const res = await api.get("/courses/newest");
-        return res.data;
-      } catch (error:any) {
-      
-        return [];    }
-    },
+getNewestCourse: async () => {
+try {
+const res = await api.get("/courses/newest");
+if(Array.isArray(res.data)){return res.data}
+if (Array.isArray(res.data?.courses)) {
+return res.data.courses;
+}
+} catch (error:any) {
+return [];    }
+},
   getFeaturedCourses: async()=>{
     const token=sessionStorage.getItem('onebitflix-token')
     const res= await api.get("/courses/featured", {

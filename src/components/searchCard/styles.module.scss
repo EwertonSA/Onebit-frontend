@@ -1,14 +1,14 @@
-@import "../../../styles/colors.scss";
+@use "../../../styles/colors.scss" as colors;
 
 .searchCard{
     width: 320px;
     height: 400px;
-    border: 1px solid $darkGray;
+    border: 1px solid colors.$darkGray;
     cursor: pointer;
 
   transition: 0.4s;
   &:hover {
-    border-color: $lightRed;
+    border-color: colors.$lightRed;
     height: 416px;
   }
 }
@@ -23,7 +23,7 @@
 
 }
 .searchCardDescription{
-    color: $lightGray;
+    color: colors.$lightGray;
     padding: 0px 20px;
     font-size: 18px;
 
