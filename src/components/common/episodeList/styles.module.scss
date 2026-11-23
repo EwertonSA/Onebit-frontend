@@ -1,7 +1,7 @@
-@import "../../../../styles/colors.scss";
+@use "../../../../styles/colors.scss" as colors;
 
 .episodeCard{
-    border: 1px solid $lightGray;
+    border: 1px solid colors.$lightGray;
     margin-bottom: 20px;
     width: 550px;
     height: 190px;
@@ -10,7 +10,7 @@
     overflow: hidden;
     transition: 0.5s;
     &:hover{
-        border-color:$lightRed;
+        border-color:colors.$lightRed;
         height: 210px;
     }
 }
@@ -20,7 +20,7 @@
     gap: 10px;
 }
 .episodeTime{
-    color: $lightGray;
+    color: colors.$lightGray;
 }
 .episodeTitleDescription{
     text-align: center;

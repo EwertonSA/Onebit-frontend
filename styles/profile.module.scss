@@ -1,4 +1,4 @@
-@import "../styles/colors.scss";
+@use "../styles/colors.scss" as color;
 .main{
   display: flex;
   flex-direction: column;
@@ -12,7 +12,7 @@
 }
 
 .form {
-  border: 1px solid $darkGray;
+  border: 1px solid colors.$darkGray;
   padding: 20px 0px;
   max-width: 100%;
 }
@@ -52,7 +52,7 @@
 }
 .memberTimeText {
   font-size: 14px;
-  color: $lightGray;
+  color: colors.$lightGray;
 }
 .label{
     font-size: 14px;
@@ -67,15 +67,15 @@
 .inputFlex{
     width: 250px;
     background-color: transparent;
-    border: 1px solid $darkGray;
+    border: 1px solid colors.$darkGray;
     text-transform: uppercase;
     color: white;
     &::placeholder{
-        color: $lightGray;
+        color: colors.$lightGray;
     }
     &:focus{
         box-shadow: none;
-        border-color: $lightRed;
+        border-color: colors.$lightRed;
         background-color: transparent;
         color: white;
         
@@ -94,7 +94,7 @@
     width: 550px;
 }
 .formBtn{
-    border-color: $lightRed;
+    border-color: colors.$lightRed;
     text-align: center;
     color: white;
     font-weight: bold;
@@ -105,7 +105,7 @@
     &:hover{
         border-color: $darkRed;
         background-color: transparent;
-        color: $lightGray;
+        color: colors.$lightGray;
     }
 }
 .title{
@@ -117,15 +117,15 @@
 .renderForm{
     display: block;
     width: 200px;
-    border: 1px solid $darkGray;
+    border: 1px solid colors.$darkGray;
     background-color: transparent;
     font-weight: bold;
     margin: 0 auto;
     padding: 14px 0px;
     &:hover{
         background-color: transparent;
-        color: $lightRed  ;
-        border-color: $lightGray;
+        color: colors.$lightRed  ;
+        border-color: colors.$lightGray;
     }
     &:active{
       background-color: transparent;
