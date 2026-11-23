@@ -103,7 +103,7 @@
     display: block;
     margin: 10px auto;
     &:hover{
-        border-color: $darkRed;
+        border-color: colors.$darkRed;
         background-color: transparent;
         color: colors.$lightGray;
     }
